@@ -1,12 +1,12 @@
 .list-of-users {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     /* border: 1px solid red; */
 }
 
 .card-users {
     border: 2px solid goldenrod;
-    min-width: 90%;
+    min-width: 80%;
     min-height: 80%;
     margin: 10px;
     background-color: white;
@@ -21,5 +21,18 @@
 }
 
 .font-awesome-icon {
+    color: green;
+    padding-bottom: 5px;
+}
+
+.font-awesome-icon-coral {
     color: coral;
 }
+@media  screen and (max-width : 700px) {
+    .list-of-users {
+        grid-template-columns: repeat(1, 1fr);
+       
+    }
+
+}
+

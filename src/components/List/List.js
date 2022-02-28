@@ -26,7 +26,7 @@ export default function List(props) {
                                 <h3>
                                     {el.login}   
                                 </h3>
-                                { showDetail ?  <FontAwesomeIcon icon={faArrowAltCircleUp} className={`fa-1x font-awesome-icon`} onClick={() => handleDetail(el.id)}/> :
+                                { showDetail ?  <FontAwesomeIcon icon={faArrowAltCircleUp} className={`fa-1x ${classes['font-awesome-icon-coral']}`} onClick={() => handleDetail(el.id)}/> :
                                   <FontAwesomeIcon icon={faArrowAltCircleDown} className={`fa-1x ${classes['font-awesome-icon']}`} onClick={() => handleDetail(el.id)}/>
                                 }
 

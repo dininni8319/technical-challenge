@@ -11,7 +11,7 @@ li {
   text-align: center;
   padding: 5px;
   color: goldenrod;
-
+  font-size: smaller;
 }
 input {
   outline: none;
