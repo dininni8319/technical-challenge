@@ -6,6 +6,7 @@ import Search from './components/Search/Search';
 import List from './components/List/List';
 
 function App() {
+
   const [autoComplete, setAutoComplete] = useState([])
 
   const { github_secrets } = useContext(ConfigContext)
@@ -17,26 +18,27 @@ function App() {
   const searchedUser = useRef('')
   
   const handleAutoComplete = (e) => {
-    e.preventDefault()
-    let firstThreeLetters = searchedUser.current.value.slice(0, 3)
-    let searchedElement = elements.filter(el => el.login.includes(firstThreeLetters))
-    
-    
-    if (searchedElement) {
-        setAutoComplete(autoComplete.concat(searchedElement)) 
-    }
+      e.preventDefault()
 
+      let firstThreeLetters = searchedUser.current.value.slice(0, 3)
+      let searchedElement = elements.filter(el => el.login.includes(firstThreeLetters))
+      
+      if (searchedElement) {
+          setAutoComplete(autoComplete.concat(searchedElement)) 
+      }
   }
-
-  console.log(autoComplete, 'testing the autocomplete');
 
   const handleSearch = (e) => {
     e.preventDefault()
     
     let searchedElement = elements.filter(el => el.login.includes(searchedUser.current.value))
-     if (searchedElement) {
-        setListSearchedUsers(listSearchedUsers.concat(searchedElement))
-     }
+    let searchedElementId = searchedElement[0]
+   
+    let searchElementList = listSearchedUsers.every(el => el.id !== searchedElementId.id)
+    
+    if (searchedUser.current.value !== '' && searchElementList) {
+      setListSearchedUsers(listSearchedUsers.concat(searchedElement))
+    }
   }
 
   // const handleSubmit = (e) => {

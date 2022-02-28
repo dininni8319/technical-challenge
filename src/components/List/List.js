@@ -5,10 +5,15 @@ import { faArrowAltCircleDown, faArrowAltCircleUp } from '@fortawesome/free-soli
 
 export default function List(props) {
     const [ showDetail, setShowDetail ] = useState(false)
-
-    const handleDetail = () => {
-        setShowDetail(!showDetail)
+   
+    const handleDetail = (id) => {
+        props.listSearchedUsers.find(el => {
+            if (id === el.id) { 
+                setShowDetail(!showDetail)
+            }
+        })
     }
+
     
     return (
         <div className={`${classes['list-of-users']}`}>
@@ -21,8 +26,8 @@ export default function List(props) {
                                 <h3>
                                     {el.login}   
                                 </h3>
-                                { showDetail ?  <FontAwesomeIcon icon={faArrowAltCircleUp} className={`fa-1x font-awesome-icon`} onClick={handleDetail}/> :
-                                  <FontAwesomeIcon icon={faArrowAltCircleDown} className={`fa-1x ${classes['font-awesome-icon']}`} onClick={handleDetail}/>
+                                { showDetail ?  <FontAwesomeIcon icon={faArrowAltCircleUp} className={`fa-1x font-awesome-icon`} onClick={() => handleDetail(el.id)}/> :
+                                  <FontAwesomeIcon icon={faArrowAltCircleDown} className={`fa-1x ${classes['font-awesome-icon']}`} onClick={() => handleDetail(el.id)}/>
                                 }
 
                                 {

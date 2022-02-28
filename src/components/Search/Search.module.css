@@ -1,4 +1,8 @@
 .btn-submit-button {
-    background-color: transparent;
+    background-color: goldenrod;
     color: white;
+    font-weight: bold;
+    border: none;
+    margin-left: 5px;
+    padding: 10px 40px;
 }

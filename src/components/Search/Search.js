@@ -8,8 +8,8 @@ export default function Search(props) {
         <form className="form-app" onSubmit={props.handleSubmit}>
             <div className='input-search'>
                 <FontAwesomeIcon icon={faSearch} className={`fa-1x font-awesome-icon`} />
-                <input type="text" ref={props.searchedUser} onKeyUp={props.handleAutoComplete}/>
-                {/* {
+                <input type="text" ref={props.searchedUser} placeholder='Type in a github username' onKeyUp={props.handleAutoComplete}/>
+                 {/* {
                     props.handleAutoComplete && props.handleAutoComplete.map(el => {
                         return (
                             <>
