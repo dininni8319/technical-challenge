@@ -10,15 +10,15 @@ export default function Search(props) {
     const [ suggestion, setSuggestions ] = useState([])
     
     const handleComplete = (id) => {
-        
         setSuggestions([])
         setAutoComplete(false)
-        // props.setListSearchedUsers('')
     }
     
     const handleHoverList = (id) => {
         let elementHovered = suggestion.filter( el => el.id === id)
-        if (elementHovered) {
+        let searchElementList = props.listSearchedUsers.every(el => el.id !== elementHovered.id)
+        
+        if (searchElementList) {
             props.setListSearchedUsers(props.listSearchedUsers.concat(elementHovered))
             setSuggestions([])
         }
