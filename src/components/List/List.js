@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleDown, faArrowAltCircleUp } from '@fortawesome/free-solid-svg-icons';
 
 export default function List(props) {
+    
     const [ showDetail, setShowDetail ] = useState(false)
    
     const handleDetail = (id) => {
@@ -25,7 +26,6 @@ export default function List(props) {
                                     { showDetail ?  <FontAwesomeIcon icon={faArrowAltCircleUp} className={`fa-1x ${classes['font-awesome-icon-coral']}`} onClick={() => handleDetail(el.id)}/> :
                                     <FontAwesomeIcon icon={faArrowAltCircleDown} className={`fa-1x ${classes['font-awesome-icon']}`} onClick={() => handleDetail(el.id)}/>
                                     }
-
                                     {
                                         showDetail && (
                                             <a href={el.html_url} target='_blank'>
