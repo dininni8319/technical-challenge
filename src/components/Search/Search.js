@@ -9,18 +9,25 @@ export default function Search(props) {
     const [autoComplete, setAutoComplete] = useState(false)
     
     const [ suggestion, setSuggestions ] = useState([])
-
+    
     const handleAutoComplete = () => {
         
-        let firstThreeLetters = props.searchedUser.current.value.slice(0, 3)
-        let searchedElement = elements.filter(el => el.login.includes(firstThreeLetters))
+        let searchString = props.searchedUser.current.value
         
-        console.log(suggestion, searchedElement, suggestion, 'teststst');
-        if (searchedElement) {
-            setSuggestions(suggestion.concat(searchedElement)) 
+        let searchUser = elements.filter(el => el.login.match(searchString))
+        
+        console.log(searchUser, 'test');
+   
+        let searchElementList = suggestion.some(el => el.id !== elements.id)
+        
+        if (searchString === '' && !searchElementList) {
+            console.log(newSet, 'in the new set');
+            let newSet = [...new Set(suggestion)]
+            setSuggestions(newSet.concat(searchUser)) 
         }
-    }
 
+    }
+   
     return (
         <form className="form-app" onSubmit={props.handleSubmit}>
             <div className='input-search'>
@@ -29,13 +36,12 @@ export default function Search(props) {
                  {
                     suggestion && suggestion.map(el => {
                         return (
-                            <div className={`${classes['auto-complete-users']}`}>
+                            <div className={`${classes['auto-complete-users']}`} key={el.id}>
                               <img src={el.avatar_url} alt="" className={`img-avatar`}/>
                               <p className={`${classes['user-title']}`}>{el.login}</p>
                             </div>
                         )
                     })
-
                 }
                 
             </div>
