@@ -5,29 +5,39 @@ import { faArrowAltCircleDown, faArrowAltCircleUp } from '@fortawesome/free-soli
 
 export default function List(props) {
     
-    const [ showDetail, setShowDetail ] = useState(false)
-   
+    const [ showDetail, setShowDetail ] = useState(null)
+    const [ cardVisible, setCardVisible ] = useState(false)
+
+    let firstElement = props.listSearchedUsers[0]
+
     const handleDetail = (id) => {
-        props.listSearchedUsers.find(el => {
+        let unique = props.listSearchedUsers.some(el => {
             if (id === el.id) { 
-                setShowDetail(!showDetail)
+                return true
             }
         })
+
+        if (unique) {
+            setShowDetail(id)  
+            setCardVisible(!cardVisible)     
+        }
     }
 
     return (
         <div className={`${classes['list-of-users']}`}>
             
               {
-                props.listSearchedUsers && props.listSearchedUsers.map((el, id )=> {
+                props.listSearchedUsers && props.listSearchedUsers.map((el) => {
                     return ( 
-                        <div className={`${classes['card-users']}`} key={id}>
+                        <div className={`${classes['card-users']}`} key={el.id}>
                                 <div className={`${classes['card-detail']}`}>
-                                    { showDetail ?  <FontAwesomeIcon icon={faArrowAltCircleUp} className={`fa-1x ${classes['font-awesome-icon-coral']}`} onClick={() => handleDetail(el.id)}/> :
+
+                                    { showDetail === el.id && cardVisible ? <FontAwesomeIcon icon={faArrowAltCircleUp} className={`fa-1x ${classes['font-awesome-icon-coral']}`} onClick={() => handleDetail(el.id)}/> :
                                     <FontAwesomeIcon icon={faArrowAltCircleDown} className={`fa-1x ${classes['font-awesome-icon']}`} onClick={() => handleDetail(el.id)}/>
                                     }
+                                    
                                     {
-                                        showDetail && (
+                                       cardVisible && showDetail === el.id || firstElement.id === el.id ? (
                                             <a href={el.html_url} target='_blank'>
                                                 <div> 
                                                     <img src={el.avatar_url} alt="" className={`img-avatar`}/>
@@ -41,7 +51,7 @@ export default function List(props) {
                                                     </ul>
                                                 </div>
                                             </a>
-                                    )  
+                                    ) : null
                                     }
                                 </div>
                             </div>

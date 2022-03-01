@@ -12,6 +12,12 @@
     margin-top: 10px; 
 }
 
+.auto-complete-users:hover {
+  background-color: darkgreen;
+  color: aliceblue;
+  transition: 0.5s;
+}
+
 .user-title {
     padding-left: 5px;
     font-size: smaller;

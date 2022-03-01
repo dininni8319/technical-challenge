@@ -16,7 +16,7 @@ function App() {
 
   const handleSearch = (e) => {
     e.preventDefault()
-    
+   
     let searchedElement = elements.filter(el => el.login.includes(searchedUser.current.value))
     let searchedElementId = searchedElement[0]
    
@@ -46,9 +46,11 @@ function App() {
                 searchedUser={searchedUser}
                 handleSubmit={handleSearch}
                 setListSearchedUsers={setListSearchedUsers}
+                listSearchedUsers={listSearchedUsers}
               />
 
               <List 
+                searchedUser={searchedUser}
                 listSearchedUsers={listSearchedUsers}
               />
 

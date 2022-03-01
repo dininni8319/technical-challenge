@@ -9,23 +9,30 @@ export default function Search(props) {
     const [autoComplete, setAutoComplete] = useState(true)
     const [ suggestion, setSuggestions ] = useState([])
     
-    const  handleComplete = () => {
+    const handleComplete = (id) => {
+        
         setSuggestions([])
         setAutoComplete(false)
         // props.setListSearchedUsers('')
     }
     
-    const handleAutoComplete = () => {
+    const handleHoverList = (id) => {
+        let elementHovered = suggestion.filter( el => el.id === id)
+        if (elementHovered) {
+            props.setListSearchedUsers(props.listSearchedUsers.concat(elementHovered))
+            setSuggestions([])
+        }
+    }
+
+    const handleAutoComplete = (id) => {
         
         let searchString = props.searchedUser.current.value
         
         let searchUser = elements.filter(el => el.login.match(searchString))
-        
-        let searchElementList = suggestion.some(el => el.id !== elements.id)
-        console.log(searchElementList);
+        let searchElementList = suggestion.some(el => el.id !== id)
         if (!searchElementList) {
             let newSet = [...new Set(suggestion)]
-            setSuggestions(searchUser)
+            setSuggestions(searchUser)  
         }
     }
    
@@ -37,7 +44,7 @@ export default function Search(props) {
                  {
                     suggestion && suggestion.map(el => {
                         return (
-                            <form className={`${classes['auto-complete-users']}`} key={el.id} onClick={props.handleSubmit} >
+                            <form className={`${classes['auto-complete-users']}`} key={el.id} onClick={() => handleHoverList(el.id)} id='auto-copmete-list'>
                               <img src={el.avatar_url} alt="" className={`img-avatar`}/>
                               <p className={`${classes['user-title']}`}>{el.login}</p>
                             </form>
