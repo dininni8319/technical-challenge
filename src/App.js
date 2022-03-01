@@ -45,6 +45,7 @@ function App() {
               <Search  
                 searchedUser={searchedUser}
                 handleSubmit={handleSearch}
+                setListSearchedUsers={setListSearchedUsers}
               />
 
               <List 
