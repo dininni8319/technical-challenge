@@ -6,3 +6,12 @@
     margin-left: 5px;
     padding: 10px 40px;
 }
+
+.auto-complete-users {
+    display: flex;
+    margin-top: 10px; 
+}
+
+.user-title {
+    padding-left: 5px;
+}

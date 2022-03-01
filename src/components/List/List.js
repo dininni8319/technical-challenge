@@ -14,10 +14,10 @@ export default function List(props) {
         })
     }
 
-    
     return (
         <div className={`${classes['list-of-users']}`}>
-            {
+            
+              {
                 props.listSearchedUsers && props.listSearchedUsers.map((el, id )=> {
                     return ( 
                         <div className={`${classes['card-users']}`} key={id}>

@@ -28,6 +28,7 @@
 .font-awesome-icon-coral {
     color: coral;
 }
+
 @media  screen and (max-width : 700px) {
     .list-of-users {
         grid-template-columns: repeat(1, 1fr);

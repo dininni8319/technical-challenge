@@ -7,26 +7,12 @@ import List from './components/List/List';
 
 function App() {
 
-  const [autoComplete, setAutoComplete] = useState([])
-
   const { github_secrets } = useContext(ConfigContext)
    
   const [users, setUsers] = useState([])
   const [listSearchedUsers, setListSearchedUsers] = useState([])
   
-  
   const searchedUser = useRef('')
-  
-  const handleAutoComplete = (e) => {
-      e.preventDefault()
-
-      let firstThreeLetters = searchedUser.current.value.slice(0, 3)
-      let searchedElement = elements.filter(el => el.login.includes(firstThreeLetters))
-      
-      if (searchedElement) {
-          setAutoComplete(autoComplete.concat(searchedElement)) 
-      }
-  }
 
   const handleSearch = (e) => {
     e.preventDefault()
@@ -41,10 +27,10 @@ function App() {
     }
   }
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   setListSearchedUsers(listSearchedUsers.concat(users))
-  // }
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setListSearchedUsers(listSearchedUsers.concat(users))
+  }
     
   // useEffect(() => {
   //   fetch(`${github_secrets.url}/${searchedUser.current.value}?client_id=${github_secrets.client_id}&client_secret=${github_secrets.client_secret}`)
@@ -59,7 +45,6 @@ function App() {
               <Search  
                 searchedUser={searchedUser}
                 handleSubmit={handleSearch}
-                handleAutoComplete={handleAutoComplete}
               />
 
               <List 
