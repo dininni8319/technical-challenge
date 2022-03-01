@@ -21,8 +21,6 @@ export default function Search(props) {
         
         let searchUser = elements.filter(el => el.login.match(searchString))
         
-        console.log(searchUser, 'test');
-        
         let searchElementList = suggestion.some(el => el.id !== elements.id)
         console.log(searchElementList);
         if (!searchElementList) {

@@ -21,28 +21,31 @@ export default function List(props) {
                 props.listSearchedUsers && props.listSearchedUsers.map((el, id )=> {
                     return ( 
                         <div className={`${classes['card-users']}`} key={id}>
-                            <div className={`${classes['card-detail']}`}>
-                                <img src={el.avatar_url} alt="" className={`img-avatar`}/>
-                                <h3>
-                                    {el.login}   
-                                </h3>
-                                { showDetail ?  <FontAwesomeIcon icon={faArrowAltCircleUp} className={`fa-1x ${classes['font-awesome-icon-coral']}`} onClick={() => handleDetail(el.id)}/> :
-                                  <FontAwesomeIcon icon={faArrowAltCircleDown} className={`fa-1x ${classes['font-awesome-icon']}`} onClick={() => handleDetail(el.id)}/>
-                                }
+                                <div className={`${classes['card-detail']}`}>
+                                    { showDetail ?  <FontAwesomeIcon icon={faArrowAltCircleUp} className={`fa-1x ${classes['font-awesome-icon-coral']}`} onClick={() => handleDetail(el.id)}/> :
+                                    <FontAwesomeIcon icon={faArrowAltCircleDown} className={`fa-1x ${classes['font-awesome-icon']}`} onClick={() => handleDetail(el.id)}/>
+                                    }
 
-                                {
-                                  showDetail && (
-                                      <div> 
-                                          <ul>
-                                              <li>{el.following_url}</li>
-                                              <li>{el.repos_url}</li>
-                                              <li>{el.gists_url}</li>
-                                          </ul>
-                                      </div>
-                                  )  
-                                }
+                                    {
+                                        showDetail && (
+                                            <a href={el.html_url} target='_blank'>
+                                                <div> 
+                                                    <img src={el.avatar_url} alt="" className={`img-avatar`}/>
+                                                    <h3>
+                                                        {el.login}   
+                                                    </h3>
+                                                    <ul>
+                                                        <li>{el.following_url}</li>
+                                                        
+                                                        <li>{el.gists_url}</li>
+                                                    </ul>
+                                                </div>
+                                            </a>
+                                    )  
+                                    }
+                                </div>
                             </div>
-                        </div>)
+                        )
                     })
             }      
         </div>
