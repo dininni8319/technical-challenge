@@ -13,10 +13,12 @@ li, a {
   color: goldenrod;
   font-size: smaller;
 }
+
 input {
   outline: none;
   border: none;
 }
+
 .container-app {
   box-sizing: border-box;
   width: 100vw;
@@ -28,36 +30,17 @@ input {
 }
 
 .row-app {
-  width: 100%;
-  min-height: 80vh;
+  width: 60%;
+  min-height: 50vh;
   background-color: #2a2a72;
   background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
   border-radius: 5px; 
 }
 
-.form-app {
-  display: flex;
-  justify-content: center;
-  padding:  20px;
-}
 
-.input-search {
-  border: none;
-  background-color: white;
-  padding:  5px; 
-}
+@media  screen and (max-width : 700px) {
+  .row-app {
+     width: 100%;
+  }
 
-
-.img-avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-}
-
-.font-awesome-icon {
-  color: gray;
-}
-
-.row-list-searched-user {
-  padding: 10px;
 }

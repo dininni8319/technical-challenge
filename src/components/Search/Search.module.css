@@ -1,3 +1,38 @@
+.form-app {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.section-search-input {
+    position: absolute;
+    left: 25%;
+    border: none;
+    background-color:white;
+    padding: 8px; 
+}
+  
+.img-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+  
+.font-awesome-icon {
+    color: gray;
+}
+  
+.row-list-searched-user {
+    padding: 10px;
+}
+  
+.section-btn {
+    width: 60%;
+    display: flex;
+    justify-content: end;
+}
+
 .btn-submit-button {
     background-color: goldenrod;
     color: white;
@@ -7,18 +42,38 @@
     padding: 10px 40px;
 }
 
-.auto-complete-users {
-    display: flex;
-    margin-top: 10px; 
+.section-auto-complete {
+   display: flex;
+   margin-top: 10px; 
+   z-index: 100;
+   position: relative;
 }
 
-.auto-complete-users:hover {
+.section-auto-complete:hover {
   background-color: darkgreen;
   color: aliceblue;
   transition: 0.5s;
 }
 
 .user-title {
-    padding-left: 5px;
-    font-size: smaller;
+  padding-left: 5px;
+  font-size: smaller;
+  text-transform: capitalize;
 }
+
+@media  screen and (max-width : 700px) {
+    .section-btn { 
+        width: 80%;
+    }
+
+    .section-search-input { 
+        left: 10%;
+        
+    }
+
+    .btn-submit-button {
+     padding: 10px 20px;
+    }
+
+  }
+  

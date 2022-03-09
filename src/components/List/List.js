@@ -27,7 +27,7 @@ export default function List(props) {
         <div className={`${classes['list-of-users']}`}>
             
               {
-                props.listSearchedUsers && props.listSearchedUsers.map((el) => {
+                props.listSearchedUsers.length > 0 && props.listSearchedUsers.map((el) => {
                     return ( 
                         <div className={`${classes['card-users']}`} key={el.id}>
                                 <div className={`${classes['card-detail']}`}>
@@ -40,7 +40,7 @@ export default function List(props) {
                                        cardVisible && showDetail === el.id || firstElement.id === el.id ? (
                                             <a href={el.html_url} target='_blank'>
                                                 <div> 
-                                                    <img src={el.avatar_url} alt="" className={`img-avatar`}/>
+                                                    <img src={el.avatar_url} alt="" className={`${classes['img-avatar']}`}/>
                                                     <h3>
                                                         {el.login}   
                                                     </h3>

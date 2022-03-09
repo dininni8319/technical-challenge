@@ -10,18 +10,19 @@ export default function Search(props) {
     const [ suggestion, setSuggestions ] = useState([])
     
     const handleComplete = (id) => {
-        
         setSuggestions([])
         setAutoComplete(false)
-        // props.setListSearchedUsers('')
     }
-    
+   
     const handleHoverList = (id) => {
         let elementHovered = suggestion.filter( el => el.id === id)
-        if (elementHovered) {
+        
+        let unique = props.listSearchedUsers.some(el => el.id === id)
+
+        if(!unique) {
             props.setListSearchedUsers(props.listSearchedUsers.concat(elementHovered))
             setSuggestions([])
-        }
+        }  
     }
 
     const handleAutoComplete = (id) => {
@@ -37,15 +38,15 @@ export default function Search(props) {
     }
    
     return (
-        <form className="form-app" onSubmit={props.handleSubmit}>
-            <div className='input-search'>
-                <FontAwesomeIcon icon={faSearch} className={`fa-1x font-awesome-icon`} />
-                <input type="text" ref={props.searchedUser} placeholder='Type in a github username' onKeyUp={handleAutoComplete} onClick={handleComplete}/>
+        <form className={`${classes['form-app']}`} onSubmit={props.handleSearch}>
+            <div className={`${classes['section-search-input']}`}>
+                <FontAwesomeIcon icon={faSearch} className={`fa-1x ${classes['font-awesome-icon']}`} />
+                <input type="text" ref={props.searchedUser} placeholder='Type in a github username' className={`${classes['btn-input']}`} onKeyUp={handleAutoComplete} onClick={handleComplete}/>
                  {
-                    suggestion && suggestion.map(el => {
+                    suggestion && suggestion.slice(0,8).map(el => {
                         return (
-                            <form className={`${classes['auto-complete-users']}`} key={el.id} onClick={() => handleHoverList(el.id)} id='auto-copmete-list'>
-                              <img src={el.avatar_url} alt="" className={`img-avatar`}/>
+                            <form className={`${classes['section-auto-complete']}`} key={el.id} onClick={() => handleHoverList(el.id)} id='auto-copmete-list'>
+                              <img src={el.avatar_url} alt="" className={`${classes['img-avatar']}`}/>
                               <p className={`${classes['user-title']}`}>{el.login}</p>
                             </form>
                         )
@@ -54,7 +55,7 @@ export default function Search(props) {
                 
             </div>
 
-            <div>
+            <div className={`${classes['section-btn']}`}>
                <button type='submit' className={`${classes['btn-submit-button']}`}>Search</button>
             </div>
       </form> 
