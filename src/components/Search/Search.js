@@ -16,7 +16,6 @@ export default function Search(props) {
    
     const handleHoverList = (id) => {
         let elementHovered = suggestion.filter( el => el.id === id)
-        
         let unique = props.listSearchedUsers.some(el => el.id === id)
 
         if(!unique) {

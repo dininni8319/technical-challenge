@@ -6,13 +6,11 @@ import Search from './components/Search/Search';
 import List from './components/List/List';
 
 function App() {
-
   const { github_secrets } = useContext(ConfigContext)
   const [users, setUsers] = useState([])
   const [listSearchedUsers, setListSearchedUsers] = useState([])
-  
+   
   const searchedUser = useRef('')
-  console.log(listSearchedUsers, 'current');
 
   const handleSearch = (e) => {
     e.preventDefault()
